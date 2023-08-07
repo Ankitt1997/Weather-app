@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6"><h3 class="text-center my-4" style="background-color: darkred; color: white;">Search for Weather:</h3>
+
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            id="weatherLocation"
+            [(ngModel)]="location"
+            aria-describedby="weatherLocation"
+            placeholder="Please input a Location"
+          />
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-md mt-2" (click)="sendToAPIXU()">Search for the weather</button>
+    </div>
+</div>
+      <div class="col-md-6"><h3 class="text-center my-4" style="background-color: darkred; color: white;">Weather Details:</h3>
+
+
+        <div *ngIf="weatherData" class="weather-detail">
+          <header>
+            <h2>{{ weatherData?.location.name }}, {{weatherData?.location.region}}, {{
+              weatherData?.location.country }}</h2>
+          </header>
+        
+          <main>
+        
+            <img src={{weatherData?.current.weather_icons[0]}}>
+        
+            <div class="main-info">
+              <p class="main-info__temp">{{weatherData?.current.temperature}} °</p>
+              <p class="main-info__description">{{weatherData?.current.weather_descriptions[0]}}</p>
+              <p class="text-center">Feels like: {{weatherData?.current.feelslike}} °</p>
+            </div>
+        
+          </main>
+        
+          <footer>
+            <p>Air pressure: {{weatherData?.current.pressure}}</p>
+        
+            <p>Humidity: {{weatherData?.current.humidity}}</p>
+          </footer>
+        
+        </div>
+        <!-- <p class="text-center">Current weather conditions: {{weatherData?.current.weather_descriptions[0]}}</p>
+        <p class="text-center">Temperature in Degrees Celsius: {{weatherData?.current.temperature}}</p>
+     
+        <p class="text-center">Feels like in Degrees Celsius: {{weatherData?.current.feelslike}}</p>
+
+        <p class="text-center">Location Searched: {{ weatherData?.location.name }}, {{weatherData?.location.region}}, {{
+          weatherData?.location.country }}</p> -->
+    </div>
+    </div>
+
+  </div>
