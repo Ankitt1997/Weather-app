@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ApixuService } from "./apixu.service";
 import { FormsModule } from '@angular/forms';
+import { NgSelect2Module } from 'ng-select2';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgSelect2Module,
+    
   ],
   providers: [ApixuService],
   bootstrap: [AppComponent]

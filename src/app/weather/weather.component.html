@@ -3,14 +3,80 @@
       <div class="col-md-6"><h3 class="text-center my-4" style="background-color: darkred; color: white;">Search for Weather:</h3>
 
         <div class="form-group">
-          <input
-            class="form-control"
-            type="text"
-            id="weatherLocation"
-            [(ngModel)]="location"
-            aria-describedby="weatherLocation"
-            placeholder="Please input a Location"
-          />
+          <!-- <ng-select2
+          class="ng2-select"
+          (valueChanged)="onSelectCountry($event,Countryname)"
+          [(ngModel)]="Countryname"
+          name="Countryname"
+          id="Countryname"
+          width="100%"
+          [placeholder]="'Select Country'">
+          <option value="">Select Country</option>
+          <option
+            [value]="item.country"
+            *ngFor="let item of AllCountry?.data">
+            {{ item.country }}
+          </option>
+        </ng-select2>
+        <ng-select2
+        class="ng2-select"
+        [(ngModel)]="Statename"
+        name="Countryname"
+        id="Countryname"
+        width="100%"
+        [placeholder]="'Select Country'">
+        <option value="">Select Country</option>
+        <option
+          [value]="item.country"
+          *ngFor="let item of AllCountry?.data">
+          {{ item.country }}
+        </option>
+      </ng-select2> -->
+      <ng-select2
+      class="ng2-select"
+      (ngModelChange)="onSelectCountry($event)"
+      [(ngModel)]="Countryname"
+      name="Countryname"
+      id="Countryname"
+      width="100%"
+      [placeholder]="'Select Country'">
+      <option value="">Select Country</option>
+      <option
+        [value]="item.country_name"
+        *ngFor="let item of AllCountry">
+        {{ item.country_name }}
+      </option>
+    </ng-select2>
+    <ng-select2
+      class="ng2-select"
+      (ngModelChange)="onSelectState($event)"
+      [(ngModel)]="Statename"
+      name="Statename"
+      id="Statename"
+      width="100%"
+      [placeholder]="'Select State'">
+      <option value="">Select State</option>
+      <option
+        [value]="item.state_name"
+        *ngFor="let item of AllState">
+        {{ item.state_name }}
+      </option>
+    </ng-select2>
+    <ng-select2
+    class="ng2-select"
+    [(ngModel)]="Cityname"
+    name="Cityname"
+    id="Cityname"
+    width="100%"
+    [placeholder]="'Select City'">
+    <option value="">Select City</option>
+    <option
+      [value]="item.city_name"
+      *ngFor="let item of Allcity">
+      {{ item.city_name }}
+    </option>
+  </ng-select2>
+
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-success btn-md mt-2" (click)="sendToAPIXU()">Search for the weather</button>
@@ -27,18 +93,18 @@
         
           <main>
         
-            <img src={{weatherData?.current.weather_icons[0]}}>
+            <img src={{weatherData?.current.condition.icon}}>
         
             <div class="main-info">
-              <p class="main-info__temp">{{weatherData?.current.temperature}} °</p>
-              <p class="main-info__description">{{weatherData?.current.weather_descriptions[0]}}</p>
-              <p class="text-center">Feels like: {{weatherData?.current.feelslike}} °</p>
+              <p class="main-info__temp">{{weatherData?.current.temp_c}} °</p>
+              <p class="main-info__description">{{weatherData?.current.condition.text}}</p>
+              <p class="text-center">Feels like: {{weatherData?.current.feelslike_c}} °</p>
             </div>
         
           </main>
         
           <footer>
-            <p>Air pressure: {{weatherData?.current.pressure}}</p>
+            <p>Air pressure: {{weatherData?.current.pressure_in}}</p>
         
             <p>Humidity: {{weatherData?.current.humidity}}</p>
           </footer>
