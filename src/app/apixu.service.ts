@@ -23,7 +23,7 @@ export class ApixuService {
     
     return this.http.get(
       //'http://api.weatherstack.com/current?access_key=4a2f017b5a924173ac262244232008&query=' + location
-      'http://api.weatherapi.com/v1/current.json?key=4a2f017b5a924173ac262244232008&query=' + location
+      'https://api.weatherapi.com/v1/current.json?key=4a2f017b5a924173ac262244232008&query=' + location
    
       );
     // http://api.weatherstack.com/current?access_key=
